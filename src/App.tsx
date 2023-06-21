@@ -7,7 +7,8 @@ import axios from 'axios'
 function App() {
   const [count, setCount] = useState(0)
   function getApi() {
-    console.log("hello")
+    setCount((count)=>count+1)
+    console.log("hello ",count)
     axios.post('http://localhost/api/user/save', 'helloo')
   }
 
