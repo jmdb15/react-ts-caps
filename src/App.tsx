@@ -9,7 +9,8 @@ function App() {
   function getApi() {
     setCount((count)=>count+1)
     console.log("hello ",count)
-    axios.post('http://localhost/api/user/save', 'helloo')
+    axios.post('https://react-ts-caps.000webhostapp.com/', '1')
+    //http://localhost/api/user/save
   }
 
   return (
