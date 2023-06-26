@@ -5,12 +5,25 @@ import './App.css'
 import axios from 'axios'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const [inputs, setInputs] = useState<Object>({});
   function getApi() {
     setCount((count)=>count+1)
     console.log("hello ",count)
-    axios.post('https://react-ts-caps.000webhostapp.com/', '1')
+    
+  }
+
+  const handleSubmit = (event : React.SyntheticEvent<EventTarget>) => {
+    event.preventDefault();
+
+    axios.post('https://react-ts-caps.000webhostapp.com/', inputs);
     //http://localhost/api/user/save
+  }
+
+  const handleChange = (event : React.ChangeEvent<HTMLInputElement>) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs(values => ({ ...values, [name]: value }));
   }
 
   return (
@@ -32,9 +45,19 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+      <form method="POST" className='border-solid border-neutral-400 border-2 rounded-lg'>
+        <h2 className='mb-4 font-bold text-2xl'>Sign up</h2>
+        <label htmlFor="name">Name</label>
+        <input type="text" id="name" name="name" onChange={handleChange} className='hover:border-neutral-700 active:border-neutral-700 border-solid border-2 rounded-md border-neutral-300 block mb-4 mx-auto'/>
+
+        <label htmlFor="email">Email</label>
+        <input type="email" id="email" name="email" pattern='+@gmail.com' onChange={handleChange} className='hover:border-neutral-700 active:border-neutral-700 border-solid border-2 rounded-md border-neutral-300 block mb-4 mx-auto'/>
+        
+        <label htmlFor="pass">Password</label>
+        <input type="password" id="pass" name="password" onChange={handleChange} className='hover:border-neutral-700 active:border-neutral-700 border-solid border-2 rounded-md border-neutral-300 block mb-4 mx-auto' />
+        <input type="submit" onClick={handleSubmit}  className='hover:bg-neutral-100 hover:border-neutral-700 cursor-pointer border-solid border-2 rounded-md border-neutral-300 block mb-4 py-2 px-4 mx-auto'/>
+      </form>
     </>
   )
 }
