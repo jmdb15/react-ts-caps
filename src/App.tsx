@@ -12,12 +12,27 @@ function App() {
     console.log("hello ",count)
     
   }
+  
 
   const handleSubmit = (event : React.SyntheticEvent<EventTarget>) => {
     event.preventDefault();
 
-    axios.post('https://react-ts-caps.000webhostapp.com/', inputs);
-    //http://localhost/api/user/save
+    // axios.post('http://localhost/api/user/save', inputs).then(function (response) {
+    //   console.log(response.data);
+    // });
+    axios.post(
+      'https://react-ts.000webhostapp.com/',
+      inputs,
+      {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        baseURL:"https://react-ts.000webhostapp.com/"
+      }//headers and baseurl for CORS 
+    ).then(function (response) {
+      console.log(response.data);
+    });
+  
   }
 
   const handleChange = (event : React.ChangeEvent<HTMLInputElement>) => {
@@ -52,7 +67,7 @@ function App() {
         <input type="text" id="name" name="name" onChange={handleChange} className='hover:border-neutral-700 active:border-neutral-700 border-solid border-2 rounded-md border-neutral-300 block mb-4 mx-auto'/>
 
         <label htmlFor="email">Email</label>
-        <input type="email" id="email" name="email" pattern='+@gmail.com' onChange={handleChange} className='hover:border-neutral-700 active:border-neutral-700 border-solid border-2 rounded-md border-neutral-300 block mb-4 mx-auto'/>
+        <input type="email" id="email" name="email" onChange={handleChange} className='hover:border-neutral-700 active:border-neutral-700 border-solid border-2 rounded-md border-neutral-300 block mb-4 mx-auto'/>
         
         <label htmlFor="pass">Password</label>
         <input type="password" id="pass" name="password" onChange={handleChange} className='hover:border-neutral-700 active:border-neutral-700 border-solid border-2 rounded-md border-neutral-300 block mb-4 mx-auto' />
