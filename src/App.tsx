@@ -22,10 +22,10 @@ function App() {
     // });
     axios.post(
       'https://react-ts.000webhostapp.com/',
-      inputs,
+      JSON.stringify(inputs),
       {
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
+          "Content-Type": "application/x-www-form-urlencoded"//x-www-form-urlencoded
         },
         baseURL:"https://react-ts.000webhostapp.com/"
       }//headers and baseurl for CORS 
@@ -39,6 +39,7 @@ function App() {
     const name = event.target.name;
     const value = event.target.value;
     setInputs(values => ({ ...values, [name]: value }));
+    console.log(inputs)
   }
 
   return (
