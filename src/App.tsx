@@ -14,7 +14,7 @@ initializeApp(config.firebaseConfig)
 
 export interface IAppProps{}
 
-const App : React.FC<IAppProps> = (props) => {
+const App : React.FC<IAppProps> = () => {
   const [count, setCount] = useState(0);
 
   return (

@@ -1,7 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import GuestList from './state/GuestList.tsx'
-import UserSearch from './state/UserSearch.tsx'
 import App from './App.tsx'
 import './index.css'
 

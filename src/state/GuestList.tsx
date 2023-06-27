@@ -5,7 +5,7 @@ const GuestList: React.FC = () => {
   const [name, setName] = useState('');
   const [guests, setGuests] = useState<string[]>([]);
 
-  const showGuests = guests.map((value) => value);
+  // const showGuests = guests.map((value) => value);
   const onClick = () => {
     setGuests([...guests, name]);
     setName('');

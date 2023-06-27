@@ -3,7 +3,7 @@ import { PropsWithChildren } from 'react';
 
 export interface IHomePageProps extends PropsWithChildren { };
 
-const Homepage: React.FC<IHomePageProps> = (props) => {
+const Homepage: React.FC<IHomePageProps> = () => {
   const auth = getAuth();
 
   return <>
